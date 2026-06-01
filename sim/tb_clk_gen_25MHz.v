@@ -18,11 +18,11 @@ module tb_clk_gen_25MHz(); // Testbenches have no physical inputs or outputs
     // -------------------------------------------------------------------------
     // Testbench Signals
     // -------------------------------------------------------------------------
-    // Registers (reg) are used to generate stimulus (inputs to the UUT).
+    // Inputs
     reg clk_100MHz;
     reg reset;
-    
-    // Wires (wire) are used to observe the outputs from the UUT.
+
+    // Outputs
     wire clk_25MHz;
     
     // -------------------------------------------------------------------------
@@ -46,7 +46,6 @@ module tb_clk_gen_25MHz(); // Testbenches have no physical inputs or outputs
     // -------------------------------------------------------------------------
     // Stimulus Block
     // -------------------------------------------------------------------------
-    // Apply test vectors sequentially to verify module behavior.
     initial begin
         // 1. Initialize signals
         clk_100MHz = 0;
