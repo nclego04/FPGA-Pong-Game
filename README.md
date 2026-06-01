@@ -16,7 +16,7 @@ Currently, the system generates a 640x480 @ 60Hz resolution video signal, fully 
 ## Hardware Requirements
 * **Board:** Digilent Nexys A7-100T
 * **Output:** VGA Monitor
-* **Inputs:** * `SW0` (Pin J15) acts as the global system reset. Ensure this switch is flipped DOWN for the clock and display to run.
+* **Inputs:** `SW0` (Pin J15) acts as the global system reset. Ensure this switch is flipped DOWN for the clock and display to run.
 
 ## Simulation & Verification
 Behavioral simulations were conducted in Vivado prior to synthesis to verify timing accuracy. 
