@@ -5,7 +5,6 @@ This repository contains the foundational VGA display controller for an FPGA-bas
 Currently, the system generates a 640x480 @ 60Hz resolution video signal, fully compliant with VESA timing standards, to render a solid white test screen. This serves as the blank canvas for the upcoming game logic.
 
 ## System Architecture
-The project uses a modular design approach.
 
 ### RTL Hierarchy
 * `pong_white_screen` (Top-Level)
