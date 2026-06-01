@@ -13,8 +13,9 @@ Currently, the system generates a 640x480 @ 60Hz resolution video signal to rend
 
 *Note: The porch offset values in `vga_sync.v` have been manually calibrated to center the image and compensate for my specific monitor (Dell S2415H).*
 
-## Hardware Requirements
+## Hardware & Software Requirements
 * **Board:** Digilent Nexys A7-100T
+* **Software:** Xilinx Vivado 2021.2
 * **Output:** VGA Monitor
 * **Inputs:** `SW0` (Pin J15) acts as the global system reset. Ensure this switch is flipped DOWN for the clock and display to run.
 
