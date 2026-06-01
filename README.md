@@ -1,4 +1,4 @@
-# FPGA Pong: VGA Display Controller
+# FPGA Pong: VGA Display Controller (White Screen)
 
 This repository contains the foundational VGA display controller for an FPGA-based Pong game, implemented in Verilog on the Digilent Nexys A7-100T development board. 
 
