@@ -11,7 +11,7 @@ Currently, the system generates a 640x480 @ 60Hz resolution video signal, fully 
   * `clk_gen_25MHz`: Divides the Nexys A7's 100 MHz onboard oscillator down to a 25 MHz pixel clock using a 2-bit counter.
   * `vga_sync`: Manages the horizontal and vertical synchronization pulses, front/back porches, and coordinates the 640x480 active visible area.
 
-*Note: The porch offset values in `vga_sync.v` have been manually calibrated to center the image and compensate for modern LCD scaler delays.*
+*Note: The porch offset values in `vga_sync.v` have been manually calibrated to center the image and compensate for my specific monitor.*
 
 ## Hardware Requirements
 * **Board:** Digilent Nexys A7-100T
