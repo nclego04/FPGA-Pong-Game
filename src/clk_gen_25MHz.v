@@ -5,7 +5,7 @@
 // 
 // Create Date: 05/31/2026 03:36:07 PM
 // Design Name: 
-// Module Name: clk_25MHz
+// Module Name: clk_gen_25MHz
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
