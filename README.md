@@ -2,7 +2,7 @@
 
 This repository contains the foundational VGA display controller for an FPGA-based Pong game, implemented in Verilog on the Digilent Nexys A7-100T development board. 
 
-Currently, the system generates a 640x480 @ 60Hz resolution video signal, fully compliant with VESA timing standards, to render a solid white test screen. This serves as the blank canvas for the upcoming game logic.
+Currently, the system generates a 640x480 @ 60Hz resolution video signal to render a solid white test screen. This serves as the blank canvas for the upcoming game logic.
 
 ## System Architecture
 
