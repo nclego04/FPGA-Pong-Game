@@ -3,14 +3,13 @@
 // Engineer: Nathan Cinco
 //
 // Create Date: 05/30/2026 10:21:45 PM
-// Module Name: pong_paddles
+// Module Name: pong_ball
 // Project Name: FPGA Pong
 // Target Devices: Nexys A7-100T
 // Description:
 // Top-level structural wrapper for the FPGA Pong hardware. Integrates the
-// clock divider, four debounced pushbuttons, and the VGA synchronization/
-// paddle-rendering module to drive both player paddles from the physical
-// VGA port.
+// clock divider, four debounced pushbuttons, and the VGA synchronization
+// module that renders both paddles and the ball to the physical VGA port.
 //
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -94,7 +93,7 @@ module pong_ball(
     // VGA Synchronization and Color Output
     // -------------------------------------------------------------------------
     // Driven by the 25 MHz pixel clock. Handles all porch/sync timing and
-    // renders both paddles (red/blue) over a white background during the
+    // renders both paddles and the ball over a white background during the
     // active area.
     vga_sync sync_generator(
         .reset(reset),

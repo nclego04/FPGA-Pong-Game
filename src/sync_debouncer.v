@@ -2,7 +2,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Engineer: Nathan Cinco
 //
-// Module Name: debouncer_fsm
+// Module Name: sync_debouncer
 // Project Name: FPGA Pong
 // Target Devices: Nexys A7-100T
 // Description:

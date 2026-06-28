@@ -18,12 +18,8 @@ module clk_gen_25MHz(
     output clk_25MHz     // 25 MHz pixel clock for VGA synchronization
     );
 
-    // 2-bit counter to divide the clock by 4
-    // 100 MHz / 4 = 25 MHz
     reg [1:0] counter;
-    
-    // Clock division engine: Continuously counts 0, 1, 2, 3 to divide the 
-    // 100 MHz master clock. Resets asynchronously to guarantee a clean startup.
+
     always @(posedge clk_100MHz or posedge reset)
     begin
         if (reset)

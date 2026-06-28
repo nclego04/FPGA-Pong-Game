@@ -8,9 +8,11 @@
 // Target Devices: Nexys A7-100T
 // Description:
 // Generates VESA-compliant VGA synchronization signals (HSYNC/VSYNC) for a
-// 640x480 @ 60Hz resolution, plus two player-controlled paddles. Includes custom
-// front/back porch offsets manually calibrated to center the active video area
-// on the target LCD monitor.
+// 640x480 @ 60Hz resolution, and renders two player-controlled paddles plus a
+// bouncing ball with paddle-collision detection and wall bouncing. Includes
+// custom front/back porch offsets manually calibrated to center the active
+// video area on the target LCD monitor. `new_game` resets the ball to a
+// center serve at any time.
 //
 // NOTE: Button inputs are expected to be ALREADY synchronized and debounced
 // upstream (see sync_debouncer in the top level). This module uses them directly.
@@ -88,8 +90,6 @@ module vga_sync(
 
     // -------------------------------------------------------------------------
     // Pixel & Line Counters
-    // Scans left-to-right (0 to TOTAL_WIDTH-1). On reaching the end of a line,
-    // resets X to 0 and increments the Y line counter.
     // -------------------------------------------------------------------------
     always @(posedge pixel_clk) begin
         if (reset) begin
@@ -195,7 +195,7 @@ module vga_sync(
     wire end_of_frame = (pixel_pos_h == TOTAL_WIDTH - 1) & (pixel_pos_v == TOTAL_HEIGHT - 1);
 
     always @(posedge pixel_clk or posedge reset) begin
-        if (reset) begin
+        if (reset | new_game) begin
             left_paddle_y  <= PADDLE_Y_MAX / 2;   // center
             right_paddle_y <= PADDLE_Y_MAX / 2;
         end else if (end_of_frame) begin
@@ -241,20 +241,13 @@ module vga_sync(
     // paddle: even if it overshoots in one frame, it is pushed back to the face.
     // -------------------------------------------------------------------------
     always @(posedge pixel_clk or posedge reset or posedge new_game) begin
-        if (reset) begin
+        if (reset || new_game) begin
             ball_x     <= BALL_START_X;
             ball_y     <= BALL_START_Y;
             ball_dir_x <= 1'b1;            // serve toward the right paddle
             ball_dir_y <= 1'b1;            // moving down
             ball_speed <= BALL_BASE_SPEED;
         end 
-        else if (new_game) begin
-            ball_x     <= BALL_START_X;
-            ball_y     <= BALL_START_Y;
-            ball_dir_x <= 1'b1;            // serve toward the right paddle
-            ball_dir_y <= 1'b1;            // moving down
-            ball_speed <= BALL_BASE_SPEED;
-        end
         else if (end_of_frame) begin
             if (relaunch) begin
                 // A miss: re-center and serve toward the opposite paddle, with
