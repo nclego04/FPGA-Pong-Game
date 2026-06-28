@@ -5,8 +5,13 @@ This repository contains the VGA display controller, paddle logic, and ball phys
 The system generates a 640x480 @ 60Hz VGA signal and renders two player-controlled paddles (red on the left, blue on the right) and a bouncing ball (black) over a white background. Each paddle moves up/down once per frame in response to a pair of debounced pushbuttons. The ball bounces off the top/bottom walls and paddles, speeds up on each paddle hit, and re-serves from center after a miss; `new_game` resets the rally at any time.
 
 ## Demo Videos
-* [Paddle controller demo](docs/videos/pong_paddles_demo.mp4) — both paddles moving in response to the four debounced pushbuttons.
-* [Ball physics demo](docs/videos/pong_ball_demo.mp4) — the ball bouncing off walls and paddles, with a serve on miss.
+Paddle controller demo — both paddles moving in response to the four debounced pushbuttons.
+
+https://github.com/user-attachments/assets/5b574d79-93de-4f04-95eb-638d0e16a4c2
+
+Ball physics demo — the ball bouncing off walls and paddles, with a serve on miss.
+
+https://github.com/user-attachments/assets/34ad209f-5ab9-41c2-9771-9cc520c46f67
 
 ## System Architecture
 
