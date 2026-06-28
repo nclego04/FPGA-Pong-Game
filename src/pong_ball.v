@@ -14,7 +14,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module pong_paddles(
+module pong_ball(
     // Board Inputs
     input clock_100MHz,  // 100 MHz oscillator from the Nexys A7 board
     input reset,         // Asynchronous system reset (mapped to SW0)
@@ -22,6 +22,7 @@ module pong_paddles(
     input top_btn,
     input bottom_btn,
     input right_btn,
+    input new_game,
 
     // VGA Physical Outputs (12-bit color total)
     output hsync,        // Horizontal synchronization pulse
@@ -31,8 +32,10 @@ module pong_paddles(
     output [3:0] vga_b   // 4-bit Blue channel
 );
 
-// Internal routing signals
+    // Internal routing signals
     wire pixel_clk;      // 25 MHz clock domain bridge between modules
+    
+    wire left_paddle_down, left_paddle_up, right_paddle_down, right_paddle_up;
 
     // -------------------------------------------------------------------------
     // System Clock Generation
@@ -86,7 +89,7 @@ module pong_paddles(
 
         .btn_out(right_paddle_up)    // right_btn -> right paddle moves up
     );
-
+    
     // -------------------------------------------------------------------------
     // VGA Synchronization and Color Output
     // -------------------------------------------------------------------------
@@ -95,6 +98,7 @@ module pong_paddles(
     // active area.
     vga_sync sync_generator(
         .reset(reset),
+        .new_game(new_game),
         .pixel_clk(pixel_clk),
         .left_btn_up(left_paddle_up),
         .left_btn_down(left_paddle_down),
