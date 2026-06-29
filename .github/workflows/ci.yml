@@ -1,0 +1,24 @@
+name: CI
+
+# Run the self-checking testbench suite on every push and pull request, so
+# regressions are caught automatically instead of relying on a manual Vivado
+# GUI run.
+on:
+  push:
+  pull_request:
+
+jobs:
+  testbenches:
+    name: Icarus Verilog testbenches
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Run testbench suite
+        run: bash sim/run_tests.sh

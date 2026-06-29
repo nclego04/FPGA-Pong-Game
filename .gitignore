@@ -1,0 +1,12 @@
+# Simulation build artifacts (produced by sim/run_tests.sh / make test)
+build/
+*.vvp
+*.vcd
+
+# Vivado project/working files
+*.jou
+*.str
+.Xil/
+.cache/
+vivado*.backup.jou
+vivado*.backup.log
