@@ -42,15 +42,20 @@ module sync_debouncer_tb;
 
     // ---- helpers ----
     // Hold the input at `level` long enough to clear the 2-FF synchronizer and
-    // the full STABLE_COUNT, plus margin, so the FSM definitely commits.
+    // the full STABLE_COUNT, plus margin, so the FSM definitely commits. The
+    // trailing negedge settle is essential, not cosmetic: without it, a
+    // confirm that lands on the very last held edge would have its btn_out
+    // NBA write still pending when a check() right after reads the stale
+    // pre-update value.
     task hold_stable(input level);
         begin
             btn_in = level;
             repeat (STABLE_COUNT + 5) @(posedge clk);
+            @(negedge clk);
         end
     endtask
 
-    task check(input exp, input [127:0] label);
+    task check(input exp, input [383:0] label);
         begin
             if (btn_out !== exp) begin
                 $display("[FAIL] %0s : btn_out=%b expected=%b @%0t",

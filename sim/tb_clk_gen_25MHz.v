@@ -13,16 +13,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module tb_clk_gen_25MHz(); // Testbenches have no physical inputs or outputs
+module tb_clk_gen_25MHz();
 
     // -------------------------------------------------------------------------
     // Testbench Signals
     // -------------------------------------------------------------------------
-    // Inputs
     reg clk_100MHz;
     reg reset;
 
-    // Outputs
     wire clk_25MHz;
     
     // -------------------------------------------------------------------------
@@ -47,20 +45,18 @@ module tb_clk_gen_25MHz(); // Testbenches have no physical inputs or outputs
     // Stimulus Block
     // -------------------------------------------------------------------------
     initial begin
-        // 1. Initialize signals
         clk_100MHz = 0;
-        reset = 1; // Assert asynchronous reset immediately
-        
-        // 2. Hold reset high for two full 100 MHz clock cycles (20ns) to 
+        reset = 1;
+
+        // Hold reset high for two full 100 MHz clock cycles (20ns) to
         // ensure the internal counter zeroes out correctly.
         #20;
-        
-        // 3. De-assert reset and allow the counter to run freely
+
         reset = 0;
-        
-        // 4. Run the simulation for 100ns (10 input clock cycles) to observe
-        // several full periods of the divided 25 MHz output clock.
-        #100;        
+
+        // Run for 100ns (10 input clock cycles) to observe several full
+        // periods of the divided 25 MHz output clock.
+        #100;
     end
     
 endmodule
