@@ -59,3 +59,6 @@ The waveform below is from `sim/sync_debouncer_tb.v`. With `STABLE_COUNT` = 10 a
 The image below shows both paddles rendered on the VGA output, confirming `vga_sync.v` correctly draws the left (red) and right (blue) paddles over the white background.
 
 ![VGA Output With Paddles Rendered](docs/images/vga_output_paddles.png)
+
+## Synthesis & Resource Utilization
+The design was synthesized, placed, and routed in Vivado 2021.2 against the Nexys A7-100T (`xc7a100tcsg324-1`). It uses 340 LUTs (0.54%), 178 registers (0.14%), and no BRAM or DSP — routing closed with 0 errors. See [`docs/synthesis_report.md`](docs/synthesis_report.md) for the full utilization/timing/power breakdown, including a caveat about a missing generated-clock constraint that currently limits static timing analysis coverage on the 25 MHz domain.
